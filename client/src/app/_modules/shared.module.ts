@@ -4,6 +4,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
@@ -16,12 +17,16 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
     }),
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    NgxGalleryModule
+    NgxGalleryModule,
+    NgxSpinnerModule.forRoot({
+      type: 'ball-scale-multiple' 
+    }),
   ],
   exports: [
     ToastrModule,
     BsDropdownModule,
     TabsModule,
+    NgxSpinnerModule,
     NgxGalleryModule
   ]
 })

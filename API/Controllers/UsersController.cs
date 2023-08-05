@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace API.Controllers
 {
@@ -40,6 +41,24 @@ namespace API.Controllers
                 return Ok(user); 
             }
             return BadRequest("User doesn't exist");
-        }    
+        }
+
+        [HttpPut()]
+        public async Task<ActionResult> UpdateUser(MemberUpdateDto memberToUpdate)
+        {
+            var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (username == null) return NotFound();
+
+            var user = await _userRepository.GetUserByUsernameAsync(username);
+
+            if (user == null) return NotFound();
+
+            _mapper.Map(memberToUpdate, user);
+
+            if (await _userRepository.SaveAllAsync()) return NoContent();
+
+            return BadRequest("Failed to update user");
+        }
     }
 }
