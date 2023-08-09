@@ -16,6 +16,7 @@ namespace API.Helpers
                 opt => opt.MapFrom(u => u.Photos.FirstOrDefault(p=> p.IsMain).Url));
             CreateMap<Photo, PhotoDto>();
             CreateMap<MemberUpdateDto, AppUser>();
+            CreateMap<RegisterDto, AppUser>();
         }
     }
 }

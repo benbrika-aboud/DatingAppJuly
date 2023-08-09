@@ -6,7 +6,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { FileUploadModule } from 'ng2-file-upload';
-
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 
 @NgModule({
@@ -17,6 +17,7 @@ import { FileUploadModule } from 'ng2-file-upload';
       positionClass: 'toast-bottom-right'
     }),
     BsDropdownModule.forRoot(),
+    BsDatepickerModule.forRoot(),
     TabsModule.forRoot(),
     NgxGalleryModule,
     NgxSpinnerModule.forRoot({
@@ -27,6 +28,7 @@ import { FileUploadModule } from 'ng2-file-upload';
   exports: [
     ToastrModule,
     BsDropdownModule,
+    BsDatepickerModule,
     TabsModule,
     NgxSpinnerModule,
     NgxGalleryModule,
